@@ -1,17 +1,14 @@
 package org.javaprotrepticon.android.pddme.activity;
 
-import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
 
 import org.javaprotrepticon.android.pddme.R;
 import org.javaprotrepticon.android.pddme.storage.Storage;
-import org.javaprotrepticon.android.pddme.storage.model.Answer;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-
-import com.j256.ormlite.table.TableUtils;
 
 public class LauncherActivity extends ActionBarActivity {
 	
@@ -30,13 +27,19 @@ public class LauncherActivity extends ActionBarActivity {
 		protected Void doInBackground(Void... params) {
 			Storage storage = new Storage(getBaseContext());
 			
-			try {
-				TableUtils.createTableIfNotExists(storage.getConnection(), Answer.class);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				TableUtils.createTableIfNotExists(storage.getConnection(), Answer.class);
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
 			
 			storage.closeConnection();
+			
+			try {
+				TimeUnit.SECONDS.sleep(3);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} 
 			
 			return null;
 		}

@@ -1,5 +1,9 @@
 package org.javaprotrepticon.android.pddme.activity;
 
-public class MainActivity {
+import android.support.v7.app.ActionBarActivity;
 
+public class MainActivity extends ActionBarActivity {
+	
+	
+	
 }
